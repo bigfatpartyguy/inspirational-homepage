@@ -17,17 +17,17 @@ const images = createSlice({
   name: 'bgImages',
   initialState: {
     images: [],
-    imgPage: 0,
-    page: 0,
+    imgNum: 0,
+    page: 1,
     isLoading: false,
     hasError: false,
   },
   reducers: {
-    nextImgPage(state, action) {
-      state.imgPage += 1;
+    nextImgNum(state, action) {
+      state.imgNum += 1;
     },
-    prevImgPage(state, action) {
-      state.imgPage -= 1;
+    prevImgNum(state, action) {
+      state.imgNum -= 1;
     },
     nextPage(state, action) {
       state.page += 1;
@@ -49,8 +49,8 @@ const images = createSlice({
 export const selectImages = state => {
   return state.bgImages.images;
 };
-export const selectImgPage = state => state.bgImages.imgPage;
+export const selectImgNum = state => state.bgImages.imgNum;
 export const selectPage = state => state.bgImages.page;
 
-export const {nextImgPage, prevImgPage, nextPage} = images.actions;
+export const {nextImgNum, prevImgNum, nextPage} = images.actions;
 export default images.reducer;

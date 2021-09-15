@@ -2,8 +2,8 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {
   selectImages,
-  selectImgPage,
-  nextImgPage,
+  selectImgNum,
+  nextImgNum,
   loadImages,
   selectPage,
   nextPage,
@@ -16,22 +16,22 @@ const BackgroundImg = () => {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
   const images = useSelector(selectImages);
-  console.log(images);
-  const imgPage = useSelector(selectImgPage);
+  const imgNum = useSelector(selectImgNum);
   const bgStyle =
-    images.length > 0 ? {backgroundImage: `url(${images[imgPage].url})`} : {};
+    images.length > 0 ? {backgroundImage: `url(${images[imgNum]?.url})`} : {};
   const {name = 'John Doe', link = '#'} =
-    images.length > 0 ? images[imgPage].author : {};
+    images.length > 0 ? images[imgNum]?.author : {};
 
   const nextImg = () => {
     console.log('working');
-    if (imgPage + 1 >= images.length) {
-      dispatch(nextPage());
-      dispatch(loadImages({page: page, keyword: 'places'}));
-      dispatch(nextImgPage());
+    if (imgNum + 1 >= images.length) {
+      dispatch(loadImages({page: page + 1, keyword: 'places'})).then(() => {
+        dispatch(nextPage());
+        dispatch(nextImgNum());
+      });
       return;
     }
-    dispatch(nextImgPage());
+    dispatch(nextImgNum());
   };
 
   return (
