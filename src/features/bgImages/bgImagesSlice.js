@@ -3,13 +3,13 @@ import {unsplashGetImgUrls} from '../../helpers/helpers';
 
 export const loadImages = createAsyncThunk(
   'bgImages/loadImages',
-  async ({keyword, page}, thunkAPI) => {
+  async ({page, dpr, w}, thunkAPI) => {
     const accessKey = 'PEQ3Jr5IitrLy0YFEURtFQi7FkwkFmiD5EjARydNdh8';
-    const url = `https://api.unsplash.com/search/photos/?page=${page}&query=${keyword}&client_id=${accessKey}`;
+    const url = `https://api.unsplash.com/collections/CJOvyaBuq-A/photos/?page=${page}&client_id=${accessKey}`;
     const response = await fetch(url);
     const json = await response.json();
     console.log(json);
-    return unsplashGetImgUrls(json);
+    return unsplashGetImgUrls(json, dpr, w);
   }
 );
 

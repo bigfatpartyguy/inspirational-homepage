@@ -7,14 +7,15 @@ import styles from './App.module.css';
 function App() {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
-
+  const dpr = window.devicePixelRatio;
+  const w = window.outerWidth;
   useEffect(() => {
-    dispatch(loadImages({page: page, keyword: 'places'}));
-  }, [dispatch]);
+    dispatch(loadImages({page, dpr, w}));
+  }, [dispatch, dpr]);
 
   return (
     <div className={styles.app}>
-      <BackgroundImg />
+      <BackgroundImg dpr={dpr} />
     </div>
   );
 }

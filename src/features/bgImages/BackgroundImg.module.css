@@ -10,11 +10,13 @@
   background-size: cover;
   background-attachment: fixed;
   transform: scale(1.2);
-  filter: blur(6px);
+  filter: blur(0px) brightness(0.8);
 }
 
 .bg ~ .bg__footer {
   position: absolute;
   bottom: 0;
   padding: 40px;
+  display: flex;
+  align-items: center;
 }
