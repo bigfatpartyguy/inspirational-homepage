@@ -16,5 +16,5 @@
 .bg ~ .bg__footer {
   position: absolute;
   bottom: 0;
-  padding: 20px;
+  padding: 40px;
 }

@@ -1,0 +1,7 @@
+.btn {
+  border: none;
+  background: none;
+  color: hsla(0, 0%, 100%, 0.6);
+  font-size: 1rem;
+  padding: 0 10px;
+}

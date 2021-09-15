@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
-import {loadImages} from '../features/bgImages/bgImagesSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {loadImages, selectPage} from '../features/bgImages/bgImagesSlice';
 import BackgroundImg from '../features/bgImages/BackgroundImg';
 import styles from './App.module.css';
 
 function App() {
   const dispatch = useDispatch();
+  const page = useSelector(selectPage);
 
   useEffect(() => {
-    dispatch(loadImages({page: 1, keyword: 'places'}));
+    dispatch(loadImages({page: page, keyword: 'places'}));
   }, [dispatch]);
 
   return (

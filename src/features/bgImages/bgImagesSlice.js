@@ -16,8 +16,9 @@ export const loadImages = createAsyncThunk(
 const images = createSlice({
   name: 'bgImages',
   initialState: {
-    urls: [],
+    images: [],
     imgPage: 0,
+    page: 0,
     isLoading: false,
     hasError: false,
   },
@@ -28,6 +29,9 @@ const images = createSlice({
     prevImgPage(state, action) {
       state.imgPage -= 1;
     },
+    nextPage(state, action) {
+      state.page += 1;
+    },
   },
   extraReducers: {
     [loadImages.pending](state, action) {
@@ -35,15 +39,18 @@ const images = createSlice({
       state.hasError = false;
     },
     [loadImages.fulfilled](state, action) {
-      state.urls.push(...action.payload);
+      state.images.push(...action.payload);
       state.isLoading = false;
       state.hasError = false;
     },
   },
 });
 
-export const selectImgUrls = state => state.bgImages.urls;
+export const selectImages = state => {
+  return state.bgImages.images;
+};
 export const selectImgPage = state => state.bgImages.imgPage;
+export const selectPage = state => state.bgImages.page;
 
-export const {nextImgPage, prevImgPage} = images.actions;
+export const {nextImgPage, prevImgPage, nextPage} = images.actions;
 export default images.reducer;
