@@ -26,9 +26,6 @@ const images = createSlice({
       state.imgPage += 1;
     },
     prevImgPage(state, action) {
-      if (state.imgPage === 0) {
-        return state;
-      }
       state.imgPage -= 1;
     },
   },
@@ -46,6 +43,7 @@ const images = createSlice({
 });
 
 export const selectImgUrls = state => state.bgImages.urls;
+export const selectImgPage = state => state.bgImages.imgPage;
 
 export const {nextImgPage, prevImgPage} = images.actions;
 export default images.reducer;
