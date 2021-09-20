@@ -5,6 +5,7 @@ import {loadQuote} from '../features/quote/quoteSlice';
 import BackgroundImg from '../features/bgImages/BackgroundImg';
 import BGControls from '../features/bgImages/BGControls';
 import Quote from '../features/quote/Quote';
+import Todos from '../features/todos/Todos';
 import styles from './App.module.css';
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
   return (
     <div className={styles.app}>
       <BackgroundImg dpr={dpr} />
+      <main className={styles['app__main-content']}>
+        <Todos />
+      </main>
       <footer className={styles['app__footer']}>
         <BGControls dpr={dpr} w={w} />
         <Quote />

@@ -1,0 +1,55 @@
+.todos {
+  width: 100%;
+  max-width: 600px;
+}
+
+.todos__form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.todos__form-label {
+  font-size: 2.5em;
+  color: white;
+  margin: 25px 0 10px;
+}
+
+.todos__form-input {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid white;
+  font-size: 2em;
+  padding: 4px;
+  text-align: center;
+  line-height: 1.2;
+  color: white;
+}
+
+.todos__form-input:focus {
+  outline: none;
+}
+
+.todos__todo-list {
+  list-style: none;
+  color: white;
+  font-size: 1.6em;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.todos__todo-list li {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid hsla(0, 0%, 100%, 0.2);
+  border-radius: 5px;
+  background-color: hsla(0, 0%, 0%, 0.3);
+  margin: 2px;
+  flex: 1 1 200px;
+}
+
+@supports (backdrop-filter: none) {
+  .todos__todo-list li {
+    background-color: hsla(0, 0%, 0%, 0.1);
+    backdrop-filter: blur(2px);
+  }
+}

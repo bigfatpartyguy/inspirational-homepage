@@ -3,7 +3,20 @@
   height: 100vh;
   overflow: hidden;
   text-align: center;
+  display: grid;
+  grid-template: 1fr 6fr 1fr / 1fr 2fr 1fr;
+  grid-template-areas:
+    'header header header'
+    '. todo .'
+    'footer footer footer';
   position: relative;
+}
+
+.app__main-content {
+  grid-area: todo;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .app__footer {
