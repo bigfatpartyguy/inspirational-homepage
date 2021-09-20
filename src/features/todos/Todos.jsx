@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
+import Button from '../../common/Button';
 import styles from './Todos.module.css';
+import {MdDone, MdClear} from 'react-icons/md';
 
 const Todos = () => {
+  const [inputVal, setInputVal] = useState('');
+
+  const handleChange = ({target: {value}}) => {
+    setInputVal(value);
+  };
+
   return (
     <section className={styles.todos}>
       <form className={styles['todos__form']}>
@@ -10,6 +18,8 @@ const Todos = () => {
         </label>
         <input
           className={styles['todos__form-input']}
+          value={inputVal}
+          onChange={handleChange}
           type="text"
           name="addTodo"
           id="addTodo"
@@ -17,15 +27,30 @@ const Todos = () => {
         />
       </form>
       <ul className={styles['todos__todo-list']}>
-        {/* Hard coded items. Needs replacement. */}
-        <li>Buy milk</li>
-        <li>Walk the dog</li>
-        <li>Learn Redux</li>
-        <li>Complete a very complex project</li>
-        <li>Learn Redux</li>
-        <li>Learn Redux</li>
-        <li>Learn Redux</li>
-        <li>Learn Redux</li>
+        {/* Hard coded items. Need replacement. */}
+        {['Buy milk', 'Walk the dog', 'Complete a very important project'].map(
+          (todo, key) => {
+            return (
+              <li key={key}>
+                {todo}
+                <span
+                  className={`${styles['todos__done-button']} ${styles['todos__list-button']}`}
+                >
+                  <Button className="todo_completed">
+                    <MdDone />
+                  </Button>
+                </span>
+                <span
+                  className={`${styles['todos__clear-button']} ${styles['todos__list-button']}`}
+                >
+                  <Button className="todo_clear">
+                    <MdClear />
+                  </Button>
+                </span>
+              </li>
+            );
+          }
+        )}
       </ul>
     </section>
   );

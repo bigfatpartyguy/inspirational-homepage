@@ -30,8 +30,9 @@
 }
 
 .todos__todo-list {
+  margin-top: 40px;
   list-style: none;
-  color: white;
+  color: hsl(228, 15%, 20%);
   font-size: 1.6em;
   display: flex;
   flex-flow: row wrap;
@@ -42,14 +43,37 @@
   padding: 20px;
   border: 1px solid hsla(0, 0%, 100%, 0.2);
   border-radius: 5px;
-  background-color: hsla(0, 0%, 0%, 0.3);
-  margin: 2px;
+  background-color: hsla(0, 0%, 100%, 0.5);
+  margin: 5px;
   flex: 1 1 200px;
+  position: relative;
 }
 
 @supports (backdrop-filter: none) {
   .todos__todo-list li {
-    background-color: hsla(0, 0%, 0%, 0.1);
+    background-color: hsla(0, 0%, 100%, 0.5);
     backdrop-filter: blur(2px);
   }
+}
+
+.todos__list-button {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 300ms ease, top 300ms ease;
+  top: 10px;
+  z-index: -1;
+}
+
+.todos__done-button {
+  right: 54px;
+}
+
+.todos__clear-button {
+  z-index: -1;
+  right: 0px;
+}
+
+.todos__todo-list li:hover .todos__list-button {
+  opacity: 1;
+  top: -20px;
 }
