@@ -61,16 +61,15 @@
   opacity: 0;
   transition: opacity 300ms ease, top 300ms ease;
   top: 10px;
-  z-index: -1;
 }
 
 .todos__done-button {
-  right: 54px;
+  right: 48px;
 }
 
 .todos__clear-button {
-  z-index: -1;
   right: 0px;
+  transition: opacity 500ms ease, top 500ms ease;
 }
 
 .todos__todo-list li:hover .todos__list-button {

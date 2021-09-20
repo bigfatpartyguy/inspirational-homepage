@@ -14,10 +14,10 @@
 
 .btn.todo_completed {
   font-size: 1em;
-  background-color: hsl(130, 57%, 74%);
+  background-color: hsl(130, 50%, 80%);
   border-radius: 50%;
-  height: 44px;
-  width: 44px;
+  height: 38px;
+  width: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,10 +25,10 @@
 
 .btn.todo_clear {
   font-size: 1em;
-  background-color: hsl(0, 56%, 74%);
+  background-color: hsl(0, 50%, 80%);
   border-radius: 50%;
-  height: 44px;
-  width: 44px;
+  height: 38px;
+  width: 38px;
   display: flex;
   justify-content: center;
   align-items: center;

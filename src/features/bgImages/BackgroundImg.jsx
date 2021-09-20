@@ -15,7 +15,7 @@ const BackgroundImg = () => {
   const bgStyle =
     images.length > 0
       ? {
-          background: `linear-gradient(transparent 50%, hsla(0, 0%, 0%, 0.1) 65%, hsla(0, 0%, 0%, 0.3) 80%, hsla(0, 0%, 0%, 0.5)), url(${images[imgNum]?.url})`,
+          backgroundImage: `linear-gradient(transparent 50%, hsla(0, 0%, 0%, 0.1) 65%, hsla(0, 0%, 0%, 0.3) 80%, hsla(0, 0%, 0%, 0.5)), url(${images[imgNum]?.url})`,
         }
       : {};
 
