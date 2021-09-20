@@ -8,6 +8,10 @@ export const loadImages = createAsyncThunk(
     const url = `https://api.unsplash.com/collections/CJOvyaBuq-A/photos/?page=${page}&client_id=${accessKey}`;
     const response = await fetch(url);
     const json = await response.json();
+    /*
+    If the end of an image collection is reached, an empty array is returned
+    from api. Throw an error then.
+    */
     if (!json.length) {
       return rejectWithValue(new Error('end of collection'));
     }

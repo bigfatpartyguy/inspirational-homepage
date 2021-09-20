@@ -25,6 +25,11 @@ const BGControls = ({dpr, w}) => {
     images.length > 0 ? images[imgNum]?.author : {};
 
   const nextImg = () => {
+    /*
+      If an already downloaded collection of image urls is close to its end
+      try to downlad more images from an api, or if there is no new images
+      reset current displayed image to the first image from the downloaded collection
+    */
     if (imgNum + 1 >= images.length) {
       dispatch(loadImages({page: page + 1, dpr, w}))
         .unwrap()
@@ -43,6 +48,10 @@ const BGControls = ({dpr, w}) => {
   };
 
   const prevImg = () => {
+    /*
+      If current image is the first image of the images array (has the index of 0)
+      then do nothing.
+    */
     if (imgNum - 1 < 0) {
       return;
     }

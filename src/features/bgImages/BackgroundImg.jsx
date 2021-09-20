@@ -7,6 +7,11 @@ import styles from './BackgroundImg.module.css';
 const BackgroundImg = () => {
   const images = useSelector(selectImages);
   const imgNum = useSelector(selectImgNum);
+  /*
+    Get an image url and dynamically add it as a background using inline styles.
+    Linear gradient is used in order add dark overlay to the bottom of an image
+    for better readability of the footer elements on top of an image.
+  */
   const bgStyle =
     images.length > 0
       ? {

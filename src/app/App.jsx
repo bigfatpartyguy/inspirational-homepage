@@ -10,8 +10,14 @@ import styles from './App.module.css';
 function App() {
   const dispatch = useDispatch();
   const page = useSelector(selectPage);
+
+  /*
+    Get parameters such as outer browser width and device pixel ratio
+    for unsplash's dynamic url. (https://unsplash.com/documentation#dynamically-resizable-images)
+  */
   const dpr = window.devicePixelRatio;
   const w = window.outerWidth;
+
   useEffect(() => {
     dispatch(loadImages({page, dpr, w}));
   }, [dispatch, dpr]);
