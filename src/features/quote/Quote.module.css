@@ -1,0 +1,28 @@
+.quote {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  color: hsla(0, 0%, 100%, 0.9);
+  font-size: 1.2em;
+  transition: color 400ms ease;
+}
+
+.quote__quote-text {
+  margin-bottom: -20px;
+  transition: margin-bottom 400ms ease;
+}
+
+.quote__author {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.quote:hover .quote__quote-text {
+  margin-bottom: 0;
+}
+
+.quote:hover .quote__author {
+  opacity: 1;
+}

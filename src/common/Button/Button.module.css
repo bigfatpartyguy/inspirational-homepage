@@ -1,8 +1,13 @@
 .btn {
   border: none;
   background: none;
-  color: hsla(0, 0%, 100%, 0.6);
+  color: hsla(0, 0%, 100%, 0.9);
+  transition: color 300ms ease;
   font-size: 1rem;
   padding: 0 10px;
   cursor: pointer;
+}
+
+.btn:hover {
+  color: hsla(0, 0%, 100%, 0.6);
 }

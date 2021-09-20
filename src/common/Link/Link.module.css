@@ -1,9 +1,9 @@
 .link {
-  color: hsla(0, 0%, 100%, 0.6);
+  color: hsla(0, 0%, 100%, 0.9);
   transition: color 400ms ease;
   text-decoration: none;
 }
 
 .link:hover {
-  color: hsla(0, 0%, 100%, 0.9);
+  color: hsla(0, 0%, 100%, 0.6);
 }
