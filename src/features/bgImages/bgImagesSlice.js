@@ -3,12 +3,14 @@ import {unsplashGetImgUrls} from '../../helpers/helpers';
 
 export const loadImages = createAsyncThunk(
   'bgImages/loadImages',
-  async ({page, dpr, w}, thunkAPI) => {
+  async ({page, dpr, w}, {rejectWithValue}) => {
     const accessKey = 'PEQ3Jr5IitrLy0YFEURtFQi7FkwkFmiD5EjARydNdh8';
     const url = `https://api.unsplash.com/collections/CJOvyaBuq-A/photos/?page=${page}&client_id=${accessKey}`;
     const response = await fetch(url);
     const json = await response.json();
-    console.log(json);
+    if (!json.length) {
+      return rejectWithValue(new Error('end of collection'));
+    }
     return unsplashGetImgUrls(json, dpr, w);
   }
 );
@@ -32,6 +34,9 @@ const images = createSlice({
     nextPage(state, action) {
       state.page += 1;
     },
+    resetImgNum(state, aciton) {
+      state.imgNum = 0;
+    },
   },
   extraReducers: {
     [loadImages.pending](state, action) {
@@ -43,6 +48,10 @@ const images = createSlice({
       state.isLoading = false;
       state.hasError = false;
     },
+    [loadImages.rejected](state, action) {
+      state.isLoading = false;
+      // Add error handler
+    },
   },
 });
 
@@ -52,5 +61,5 @@ export const selectImages = state => {
 export const selectImgNum = state => state.bgImages.imgNum;
 export const selectPage = state => state.bgImages.page;
 
-export const {nextImgNum, prevImgNum, nextPage} = images.actions;
+export const {nextImgNum, prevImgNum, nextPage, resetImgNum} = images.actions;
 export default images.reducer;

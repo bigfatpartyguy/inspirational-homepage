@@ -5,6 +5,7 @@ import {
   selectImgNum,
   nextImgNum,
   prevImgNum,
+  resetImgNum,
   loadImages,
   selectPage,
   nextPage,
@@ -25,17 +26,24 @@ const BGControls = ({dpr, w}) => {
 
   const nextImg = () => {
     if (imgNum + 1 >= images.length) {
-      dispatch(loadImages({page: page + 1, dpr, w})).then(() => {
-        dispatch(nextPage());
-        dispatch(nextImgNum());
-      });
+      dispatch(loadImages({page: page + 1, dpr, w}))
+        .unwrap()
+        .then(() => {
+          dispatch(nextPage());
+          dispatch(nextImgNum());
+        })
+        .catch(err => {
+          if (err.message === 'end of collection') {
+            dispatch(resetImgNum());
+          }
+        });
       return;
     }
     dispatch(nextImgNum());
   };
 
   const prevImg = () => {
-    if (imgNum - 1 <= 0) {
+    if (imgNum - 1 < 0) {
       return;
     }
     dispatch(prevImgNum());
