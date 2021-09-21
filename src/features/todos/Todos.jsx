@@ -5,11 +5,22 @@ import {selectTodos, addTodo, removeTodo, markAsCompleted} from './todosSlice';
 import Button from '../../common/Button';
 import styles from './Todos.module.css';
 import {MdDone, MdClear} from 'react-icons/md';
+import classNames from 'classnames';
 
 const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectTodos);
   const [inputVal, setInputVal] = useState('');
+
+  const clearBtnClassNames = classNames(
+    styles['todos__clear-button'],
+    styles['todos__list-button']
+  );
+
+  const doneBtnClassNames = classNames(
+    styles['todos__done-button'],
+    styles['todos__list-button']
+  );
 
   const handleSubmnit = evt => {
     evt.preventDefault();
@@ -52,39 +63,24 @@ const Todos = () => {
       </form>
       <ul className={styles['todos__todo-list']}>
         {todos.map(todo => {
-          if (todo.completed) {
-            return (
-              <li key={todo.id}>
-                {todo.value}
-                <span
-                  className={`${styles['todos__clear-button']} ${styles['todos__list-button']}`}
-                >
+          const listItemClassNames = classNames(
+            styles['todos__list-item'],
+            styles[todo.completed && 'todos__list-item_completed']
+          );
+          return (
+            <li className={listItemClassNames} key={todo.id}>
+              {todo.value}
+              {!todo.completed && (
+                <span className={doneBtnClassNames}>
                   <Button
-                    className="todo_clear"
-                    onClick={() => handleRemove(todo.id)}
+                    className="todo_completed"
+                    onClick={() => handleCompleted(todo.id)}
                   >
-                    <MdClear />
+                    <MdDone />
                   </Button>
                 </span>
-              </li>
-            );
-          }
-          return (
-            <li key={todo.id}>
-              {todo.value}
-              <span
-                className={`${styles['todos__done-button']} ${styles['todos__list-button']}`}
-              >
-                <Button
-                  className="todo_completed"
-                  onClick={() => handleCompleted(todo.id)}
-                >
-                  <MdDone />
-                </Button>
-              </span>
-              <span
-                className={`${styles['todos__clear-button']} ${styles['todos__list-button']}`}
-              >
+              )}
+              <span className={clearBtnClassNames}>
                 <Button
                   className="todo_clear"
                   onClick={() => handleRemove(todo.id)}
