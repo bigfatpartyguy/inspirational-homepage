@@ -2,11 +2,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Inspirational Homepage Project
 
+![screenshot](https://raw.githubusercontent.com/bigfatpartyguy/inspirational-homepage/main/Inspirational-homepage_banner.png)
+
 ## About
 
-This app is done as the final project for codecademy's learning path: [Create an Advanced Web App with React and Redux](https://www.codecademy.com/learn/paths/advanced-react-redux-sp).
+This app was done as the final project for the codecademy's learning path: [Create an Advanced Web App with React and Redux](https://www.codecademy.com/learn/paths/advanced-react-redux-sp).
 
-This app is also inspired by [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=ru) chrome extension.
+This app was also inspired by [Momentum](https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=ru) chrome extension.
 
 ## Available Scripts
 
