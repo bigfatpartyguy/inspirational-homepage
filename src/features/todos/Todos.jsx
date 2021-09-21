@@ -1,18 +1,42 @@
 import React, {useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {v4 as uuidv4} from 'uuid';
+import {selectTodos, addTodo, removeTodo, markAsCompleted} from './todosSlice';
 import Button from '../../common/Button';
 import styles from './Todos.module.css';
 import {MdDone, MdClear} from 'react-icons/md';
 
 const Todos = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector(selectTodos);
   const [inputVal, setInputVal] = useState('');
+
+  const handleSubmnit = evt => {
+    evt.preventDefault();
+    const todo = {
+      value: inputVal,
+      id: uuidv4(),
+      completed: false,
+    };
+    dispatch(addTodo(todo));
+    setInputVal('');
+  };
+
+  const handleRemove = id => {
+    dispatch(removeTodo(id));
+  };
 
   const handleChange = ({target: {value}}) => {
     setInputVal(value);
   };
 
+  const handleCompleted = id => {
+    dispatch(markAsCompleted(id));
+  };
+
   return (
     <section className={styles.todos}>
-      <form className={styles['todos__form']}>
+      <form className={styles['todos__form']} onSubmit={handleSubmnit}>
         <label className={styles['todos__form-label']} htmlFor="addTodo">
           What&apos;s your main focus for today?
         </label>
@@ -27,30 +51,50 @@ const Todos = () => {
         />
       </form>
       <ul className={styles['todos__todo-list']}>
-        {/* Hard coded items. Need replacement. */}
-        {['Buy milk', 'Walk the dog', 'Complete a very important project'].map(
-          (todo, key) => {
+        {todos.map(todo => {
+          if (todo.completed) {
             return (
-              <li key={key}>
-                {todo}
-                <span
-                  className={`${styles['todos__done-button']} ${styles['todos__list-button']}`}
-                >
-                  <Button className="todo_completed">
-                    <MdDone />
-                  </Button>
-                </span>
+              <li key={todo.id}>
+                {todo.value}
                 <span
                   className={`${styles['todos__clear-button']} ${styles['todos__list-button']}`}
                 >
-                  <Button className="todo_clear">
+                  <Button
+                    className="todo_clear"
+                    onClick={() => handleRemove(todo.id)}
+                  >
                     <MdClear />
                   </Button>
                 </span>
               </li>
             );
           }
-        )}
+          return (
+            <li key={todo.id}>
+              {todo.value}
+              <span
+                className={`${styles['todos__done-button']} ${styles['todos__list-button']}`}
+              >
+                <Button
+                  className="todo_completed"
+                  onClick={() => handleCompleted(todo.id)}
+                >
+                  <MdDone />
+                </Button>
+              </span>
+              <span
+                className={`${styles['todos__clear-button']} ${styles['todos__list-button']}`}
+              >
+                <Button
+                  className="todo_clear"
+                  onClick={() => handleRemove(todo.id)}
+                >
+                  <MdClear />
+                </Button>
+              </span>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
