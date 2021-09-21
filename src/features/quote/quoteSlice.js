@@ -4,21 +4,27 @@ import {getQuote} from '../../helpers/helpers';
 export const loadQuote = createAsyncThunk(
   'quote/loadQuote',
   async (arg, thunkAPI) => {
+    if (localStorage.getItem('quote')) {
+      return JSON.parse(localStorage.getItem('quote'));
+    }
     const url = 'https://quotes.rest/qod';
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Request failed. Status: ${response.status}`);
     }
     const json = await response.json();
-    return getQuote(json);
+    const quote = getQuote(json);
+    // Save quote to localStorage to avoid exceeding api rate limit
+    localStorage.setItem('quote', JSON.stringify(quote));
+    return quote;
   }
 );
 
 const quote = createSlice({
   name: 'quote',
   initialState: {
-    author: 'Frank Gerbert',
-    quote: 'Quick brown fox jumps over the lazy dog',
+    author: 'John Doe',
+    quote: 'Someday there will be an inpirational quote here',
   },
   extraReducers: {
     [loadQuote.fulfilled](state, action) {
