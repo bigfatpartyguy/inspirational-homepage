@@ -14,3 +14,11 @@ export const getQuote = json => {
   // Get only useful content from a json that quote api returns
   return json.contents.quotes[0];
 };
+
+export const getWeather = json => {
+  // Get only an icon and a temperature from a json returned from openweathermap
+  return {
+    icon: `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`,
+    temp: json.main.temp.toFixed(),
+  };
+};
