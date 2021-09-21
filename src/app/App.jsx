@@ -6,6 +6,7 @@ import BackgroundImg from '../features/bgImages/BackgroundImg';
 import BGControls from '../features/bgImages/BGControls';
 import Quote from '../features/quote/Quote';
 import Todos from '../features/todos/Todos';
+import Weather from '../features/weather/Weather';
 import styles from './App.module.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className={styles.app}>
       <BackgroundImg dpr={dpr} />
+      <Weather />
       <main className={styles['app__main-content']}>
         <Todos />
       </main>

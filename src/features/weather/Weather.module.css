@@ -1,0 +1,16 @@
+.weather {
+  grid-area: 1 / -2 / span 1 / span 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: hsla(0, 0%, 100%, 0.9);
+  padding-right: 40px;
+}
+
+.weather__temp {
+  font-size: 2em;
+}
+
+.weather__temp span {
+  margin-left: 4px;
+}
