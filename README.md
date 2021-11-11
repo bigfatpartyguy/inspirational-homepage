@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![screenshot](https://raw.githubusercontent.com/bigfatpartyguy/inspirational-homepage/main/Inspirational-homepage_banner.png)
 
+[Demo](https://inspirational-momentum.surge.sh/)
+
 ## About
 
 This app was done as the final project for the codecademy's learning path: [Create an Advanced Web App with React and Redux](https://www.codecademy.com/learn/paths/advanced-react-redux-sp).
