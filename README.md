@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [🎮Demo](https://inspirational-momentum.surge.sh/)
 
+🚨 If the background image doesn't load, try refreshing the page.
+
 ## About
 
 This app was done as the final project for the codecademy's learning path: [Create an Advanced Web App with React and Redux](https://www.codecademy.com/learn/paths/advanced-react-redux-sp).
