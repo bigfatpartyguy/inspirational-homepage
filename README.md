@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![screenshot](https://raw.githubusercontent.com/bigfatpartyguy/inspirational-homepage/main/Inspirational-homepage_banner.png)
 
-[Demo](https://inspirational-momentum.surge.sh/)
+[🎮Demo](https://inspirational-momentum.surge.sh/)
 
 ## About
 

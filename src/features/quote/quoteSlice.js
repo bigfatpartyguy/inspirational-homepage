@@ -4,8 +4,8 @@ import {getQuote} from '../../helpers/helpers';
 export const loadQuote = createAsyncThunk(
   'quote/loadQuote',
   async (arg, thunkAPI) => {
-    if (localStorage.getItem('quote')) {
-      return JSON.parse(localStorage.getItem('quote'));
+    if (sessionStorage.getItem('quote')) {
+      return JSON.parse(sessionStorage.getItem('quote'));
     }
     const url = 'https://quotes.rest/qod';
     const response = await fetch(url);
@@ -15,7 +15,7 @@ export const loadQuote = createAsyncThunk(
     const json = await response.json();
     const quote = getQuote(json);
     // Save quote to localStorage to avoid exceeding api rate limit
-    localStorage.setItem('quote', JSON.stringify(quote));
+    sessionStorage.setItem('quote', JSON.stringify(quote));
     return quote;
   }
 );
