@@ -22,7 +22,7 @@ const BGControls = ({dpr, w}) => {
   const imgNum = useSelector(selectImgNum);
 
   const {name = 'John Doe', link = '#'} =
-    images.length > 0 ? images[imgNum]?.author : {};
+    images.length > 0 ? images[imgNum].author : {};
 
   const nextImg = () => {
     /*

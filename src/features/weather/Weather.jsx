@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {selectWeather, loadWeatherData} from './weather';
+import {selectWeather, loadWeatherData} from './weatherSlice';
 import styles from './Weather.module.css';
 
 const Weather = () => {
