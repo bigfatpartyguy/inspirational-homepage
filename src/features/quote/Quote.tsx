@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {selectQuote, loadQuote} from './quoteSlice';
 import styles from './Quote.module.css';
 
-const Quote = () => {
-  const dispatch = useDispatch();
+const Quote = (): JSX.Element => {
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(loadQuote());
   }, [dispatch]);
 
-  const {author, quote} = useSelector(selectQuote);
+  const {author, quote} = useAppSelector(selectQuote);
   return (
     <div className={styles['quote']}>
       <p className={styles['quote__quote-text']}>{quote}</p>

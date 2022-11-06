@@ -1,12 +1,11 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import {useAppSelector} from '../../app/hooks';
 import {selectImages, selectImgNum} from './bgImagesSlice';
 
 import styles from './BackgroundImg.module.css';
 
-const BackgroundImg = () => {
-  const images = useSelector(selectImages);
-  const imgNum = useSelector(selectImgNum);
+const BackgroundImg = (): JSX.Element => {
+  const images = useAppSelector(selectImages);
+  const imgNum = useAppSelector(selectImgNum);
   /*
     Get an image url and dynamically add it as a background using inline styles.
     Linear gradient is used in order add dark overlay to the bottom of an image

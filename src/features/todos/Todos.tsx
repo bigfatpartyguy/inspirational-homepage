@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {v4 as uuidv4} from 'uuid';
 import {selectTodos, addTodo, removeTodo, markAsCompleted} from './todosSlice';
 import Button from '../../common/Button';
@@ -7,9 +7,9 @@ import styles from './Todos.module.css';
 import {MdDone, MdClear} from 'react-icons/md';
 import classNames from 'classnames';
 
-const Todos = () => {
-  const dispatch = useDispatch();
-  const todos = useSelector(selectTodos);
+const Todos = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const todos = useAppSelector(selectTodos);
   const [inputVal, setInputVal] = useState('');
 
   const clearBtnClassNames = classNames(
@@ -22,7 +22,7 @@ const Todos = () => {
     styles['todos__list-button']
   );
 
-  const handleSubmnit = evt => {
+  const handleSubmnit = (evt: React.SyntheticEvent) => {
     evt.preventDefault();
     const todo = {
       value: inputVal,
@@ -33,15 +33,15 @@ const Todos = () => {
     setInputVal('');
   };
 
-  const handleRemove = id => {
+  const handleRemove = (id: string) => {
     dispatch(removeTodo(id));
   };
 
-  const handleChange = ({target: {value}}) => {
-    setInputVal(value);
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setInputVal(evt.target.value);
   };
 
-  const handleCompleted = id => {
+  const handleCompleted = (id: string) => {
     dispatch(markAsCompleted(id));
   };
 
@@ -62,10 +62,10 @@ const Todos = () => {
         />
       </form>
       <ul className={styles['todos__todo-list']}>
-        {todos.map(todo => {
+        {todos.map((todo) => {
           const listItemClassNames = classNames(
             styles['todos__list-item'],
-            styles[todo.completed && 'todos__list-item_completed']
+            styles[todo.completed ? 'todos__list-item_completed' : '']
           );
           return (
             <li className={listItemClassNames} key={todo.id}>

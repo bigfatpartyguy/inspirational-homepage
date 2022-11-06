@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useEffect} from 'react';
 import {selectWeather, loadWeatherData} from './weatherSlice';
 import styles from './Weather.module.css';
+import {useAppDispatch, useAppSelector} from '../../app/hooks';
 
-const Weather = () => {
-  const dispatch = useDispatch();
-  const weather = useSelector(selectWeather);
+const Weather = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+  const weather = useAppSelector(selectWeather);
 
   useEffect(() => {
     // Make an api call every 10 minutes
@@ -15,7 +15,7 @@ const Weather = () => {
         Get current position of the device and load
         weather data using lattitude and longitude
       */
-      navigator.geolocation.getCurrentPosition(pos => {
+      navigator.geolocation.getCurrentPosition((pos) => {
         const {latitude: lat, longitude: lon} = pos.coords;
         dispatch(loadWeatherData({lat, lon}));
       });
@@ -27,8 +27,8 @@ const Weather = () => {
     };
   }, [dispatch]);
 
-  return (
-    weather.temp && (
+  if ('temp' in weather) {
+    return (
       <section className={styles['weather']}>
         <img src={weather.icon} alt="" />
         <p className={styles['weather__temp']}>
@@ -36,8 +36,9 @@ const Weather = () => {
           <span>&deg;</span>
         </p>
       </section>
-    )
-  );
+    );
+  }
+  return <div></div>;
 };
 
 export default Weather;

@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from './hooks';
 import {loadImages, selectPage} from '../features/bgImages/bgImagesSlice';
 import BackgroundImg from '../features/bgImages/BackgroundImg';
 import BGControls from '../features/bgImages/BGControls';
@@ -8,9 +8,9 @@ import Todos from '../features/todos/Todos';
 import Weather from '../features/weather/Weather';
 import styles from './App.module.css';
 
-function App() {
-  const dispatch = useDispatch();
-  const page = useSelector(selectPage);
+function App(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const page = useAppSelector(selectPage);
 
   /*
     Get parameters such as outer browser width and device pixel ratio

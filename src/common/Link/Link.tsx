@@ -1,7 +1,11 @@
-import React from 'react';
 import styles from './Link.module.css';
 
-const Link = ({href, children}) => {
+interface LinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const Link = ({href, children}: LinkProps): JSX.Element => {
   return (
     <a
       className={styles.link}
