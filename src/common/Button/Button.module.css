@@ -12,7 +12,7 @@
   color: hsla(0, 0%, 100%, 0.6);
 }
 
-.btn.todo_completed {
+.btn.todo_complete {
   font-size: 1em;
   background-color: hsl(130, 50%, 80%);
   border-radius: 50%;

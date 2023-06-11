@@ -47,9 +47,13 @@ const Todos = (): JSX.Element => {
 
   return (
     <section className={styles.todos}>
-      <form className={styles['todos__form']} onSubmit={handleSubmnit}>
+      <form
+        data-testid="todo-form"
+        className={styles['todos__form']}
+        onSubmit={handleSubmnit}
+      >
         <label className={styles['todos__form-label']} htmlFor="addTodo">
-          What&apos;s your main focus for today?
+          {`What's your main focus for today?`}
         </label>
         <input
           className={styles['todos__form-input']}
@@ -61,19 +65,19 @@ const Todos = (): JSX.Element => {
           autoComplete="off"
         />
       </form>
-      <ul className={styles['todos__todo-list']}>
+      <ul data-testid="todos" className={styles['todos__todo-list']}>
         {todos.map((todo) => {
           const listItemClassNames = classNames(
             styles['todos__list-item'],
             styles[todo.completed ? 'todos__list-item_completed' : '']
           );
           return (
-            <li className={listItemClassNames} key={todo.id}>
+            <li data-testid="todo" className={listItemClassNames} key={todo.id}>
               {todo.value}
               {!todo.completed && (
                 <span className={doneBtnClassNames}>
                   <Button
-                    className="todo_completed"
+                    className="todo_complete"
                     onClick={() => handleCompleted(todo.id)}
                   >
                     <MdDone />
